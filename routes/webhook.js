@@ -3,7 +3,7 @@ var router = express.Router();
 var chatservice = require('../server/chatService');
 /* GET hello world page. */
 router.get('/', function(req, res, next) {
-  if (chatservice.authenticate){
+  if (chatservice.authenticate(req)){
     return res.status(200).send(req.query['hub.challenge']);
   } else {
     return res.sendStatus(403);
